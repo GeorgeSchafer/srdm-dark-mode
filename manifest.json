@@ -7,7 +7,7 @@
     "service_worker": "./scripts/background.js"
   },
   "content_scripts": [{
-    "css": [ "./styles/supportRent.css" ],
+    "css": [ "./styles/srdm-style.css" ],
     "js/js": [ "./js/content.js" ],
     "matches": [
       "https://support.qa-smartrent.com/*",

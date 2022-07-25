@@ -6,12 +6,17 @@ chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
   const domain = url.hostname
   // `domain` now has a value like "example.com"
 
+  const SRDomain = (
+    domain === "support.qa-smartrent.com" || 
+    domain === "support.smartrent.com"|| 
+    domain === "control.smartrent-qa.com" || 
+    domain === "control.smartrent.com"
+  );
+
   /** @summary IFF we are on SupportRent or CMW. 
    * Otherwise, don't do the thing. */
-  if(domain === "support.qa-smartrent.com" || 
-     domain === "support.smartrent.com"|| 
-     domain === "control.smartrent-qa.com" || 
-     domain === "control.smartrent.com"){
+  if( SRDomain ){
+
     /* for smartrent CMW && SupportRent only */
     const Elements = { 
       divs: document.getElementsByTagName("div"), // Retrive an array of divs
@@ -20,16 +25,16 @@ chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
       h3: document.getElementsByTagName("h3"), 
       h4: document.getElementsByTagName("h4"), 
       h5: document.getElementsByTagName("h5"),
-      input: document.getElementsByTagName("input")
+      input: document.getElementsByTagName(`input[type="text"]`)
     };
     
     const Listeners = [ 
-      document.onload(stripInlineStyleColors())
+      document.onload(stripInlineStyleColors()) 
     ];
     
     const Functions = {
       stripInlineStyleColors: () => {
-        const bundle= { 
+        const bundle = { 
           divs: Elements.divs,
           h1: Elements.h1,
           h2: Elements.h2,
@@ -40,9 +45,10 @@ chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
         }
     
         for(const [key,value] of Object.entries(bundle) ){
-           value.removeProperty("background-color"); // Remove inline tag
-           value.removeProperty("color");  // Remove text color
-           value.removeProperty("box-shadow");  // Remove box shadow
+          console.log(`Stripping ${value}`);
+          value.removeProperty("background-color"); // Remove inline tag
+          value.removeProperty("color");  // Remove text color
+          value.removeProperty("box-shadow");  // Remove box shadow
         }
     
       }
