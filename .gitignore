@@ -6,3 +6,6 @@ getting-started-finished/
 
 # References
 svg/
+
+# trash files
+.DS_Store
