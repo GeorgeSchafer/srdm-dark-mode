@@ -1,3 +1,3 @@
 # Why?
 
-Because dark mode is like stabbing a user in the eyes.
+Because light mode is like stabbing a user in the eyes.
