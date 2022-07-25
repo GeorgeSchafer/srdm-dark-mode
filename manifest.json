@@ -9,7 +9,10 @@
   "content_scripts": [{
     "css": [ "./styles/supportRent.css" ],
     "js/js": [ "./js/content.js" ],
-    "matches": ["https://support.qa-smartrent.com/*"]
+    "matches": [
+      "https://support.qa-smartrent.com/*",
+      "https://support.qa-smartrent.com/*"
+    ]
   }],
   "permissions": [
     "storage",
@@ -18,17 +21,17 @@
   "action": {
     "default_popup": "popup.html",
     "default_icon": {
-      "16": "./images/sr-logo16.png",
-      "32": "./images/sr-logo32.png",
-      "48": "./images/sr-logo48.png",
-      "128": "./images/sr-logo128.png"
+      "16": "./images/srdm-icon16.png",
+      "32": "./images/srdm-icon32.png",
+      "48": "./images/srdm-icon48.png",
+      "128": "./images/srdm-icon128.png"
     }
   },
   "icons": {
-    "16": "./images/sr-logo16.png",
-    "32": "./images/sr-logo32.png",
-    "48": "./images/sr-logo48.png",
-    "128": "./images/sr-logo128.png"
+    "16": "./images/srdm-icon16.png",
+    "32": "./images/srdm-icon32.png",
+    "48": "./images/srdm-icon48.png",
+    "128": "./images/srdm-icon128.png"
   }
 }
 
