@@ -1,9 +1,13 @@
 "use strict";
 
-function theThing(tab,url){
+function doTheThing(tab,url){
 
+  /**
+   * @const Elements
+   * Here we are finding
+   */
   const Elements = { 
-    divs: document.getElementsByTagName("div"), // Retrive an array of divs
+    divs: document.getElementsByTagName("div"),
     h1: document.getElementsByTagName("h1"),
     h2: document.getElementsByTagName("h2"), 
     h3: document.getElementsByTagName("h3"), 
@@ -29,10 +33,11 @@ function theThing(tab,url){
       }
   
       for(const [key,value] of Object.entries(bundle) ){
-        console.log(`Stripping ${value}`);
-        value.removeProperty("background-color"); // Remove inline tag
-        value.removeProperty("color");  // Remove text color
-        value.removeProperty("box-shadow");  // Remove box shadow
+        value.forEach( (index) => {
+          index.removeProperty("background-color");
+          index.removeProperty("color");
+          index.removeProperty("box-shadow");
+        } )
       }
     }
   };
@@ -54,7 +59,7 @@ chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
   /** @summary IFF we are on SupportRent or CMW. 
    * Otherwise, don't do the thing. */
   if( SRDomain ){
-    theThing(tab,url);
+    doTheThing(tab,url);
   }
 
 });
