@@ -6,4 +6,6 @@ Because light mode is like stabbing a user in the eyes.
 
 ## Hex of SmartRent brand color
 
-```#00aca1```
+```
+#00aca1
+```
