@@ -11,7 +11,9 @@
     "js/js": [ "./js/content.js" ],
     "matches": [
       "https://support.qa-smartrent.com/*",
-      "https://support.qa-smartrent.com/*"
+      "https://support.smartrent.com/*",
+      "https://control.smartrent-qa.com/*",
+      "https://control.smartrent.com/*"
     ]
   }],
   "permissions": [
