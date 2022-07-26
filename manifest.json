@@ -8,7 +8,7 @@
   },
   "content_scripts": [{
     "css": [ "./styles/srdm-style.css" ],
-    "js/js": [ "./js/content.js" ],
+    "js": [ "content.js" ],
     "matches": [
       "https://support.qa-smartrent.com/*",
       "https://support.smartrent.com/*",
