@@ -1,40 +1,67 @@
 "use strict";
 
-/**  @const Elements
- *   We are storing the elements that need to be changed.
- */
+  /* 
+    @const Elements
+    We are storing the elements that want to be changed into arrays.
+  */
 const Elements = { 
-  divs: Array.from(document.getElementsByTagName("div")),
   h1: Array.from(document.getElementsByTagName("h1")),
   h2: Array.from(document.getElementsByTagName("h2")), 
   h3: Array.from(document.getElementsByTagName("h3")), 
   h4: Array.from(document.getElementsByTagName("h4")), 
   h5: Array.from(document.getElementsByTagName("h5")),
-  input: Array.from(document.getElementsByTagName(`input`))
+  divs: Array.from(document.getElementsByTagName("div")),
+  input: Array.from(document.getElementsByTagName("input"))
 };
 
 const Functions = {
   stripInlineStyles: () => {
-    const bundle = { 
-      divs: Elements.divs,
-      h1: Elements.h1,
-      h2: Elements.h2,
-      h3: Elements.h3,
-      h4: Elements.h4,
-      h5: Elements.h5,
-      input: Elements.input
-    };
 
-    console.log(JSON.parse(JSON.stringify(bundle)));
+    console.log(JSON.parse(JSON.stringify(Elements)));
 
-    for(const [key,value] of Object.entries(bundle) ){
-      console.log(`${key}: ${value}`);
+    
+    for(const [key,value] of Object.entries(Elements) ){
+      console.log(`${key}: ${value}`); // Using this to verify that the script is running
       value.forEach( (index) => {
-        index.style.removeProperty("color");
-        index.style.removeProperty("background-color");
-        index.style.removeProperty("box-shadow");
-        console.log(`index.style: ${index.style.toString()}`)
-        // let str = `${index.style}`;
+
+      /*
+        @description Attempt #1
+        This is the first thing I tried. This is 
+        supposed to find the property and remove it. 
+        However, according to the MDN it 
+        manipulates the css file, not the inline 
+        style.
+      */
+        // index.style.removeProperty("background-color");
+        // index.style.removeProperty("color");
+        // index.style.removeProperty("box-shadow");
+
+      /*
+        @description attempt #2
+        This is the next thing I tried. I found this on
+        StackOverflow but it looks like it works the same
+        way as attempt #1.
+      */
+        // index.style.backgroundColor( "" );
+        // index.style.color( "" );
+        // index.style.boxShadow( "" );
+
+      /*
+        @description attempt #3
+        Eventually, I got the bright idea of trying 
+        to manipulate the string of the inline style.
+        I think this could work, but this wouldn't be
+        my preferred option as manipulating strings
+        in this way doesn't seem like an efficient 
+        way to accomplish this. At this point, I had
+        to stop looking at the code.
+      */
+        //  str declaration #1
+        // let str = `index.style`
+
+        // str declaration option #2
+        // let str = `JSON.stringify(index.style)`;
+
         // let colorIndex;
         // let colorEnd;
         // let bgColorIndex;
@@ -69,4 +96,7 @@ const Functions = {
   }
 };
 
+/*
+We run the function as soon as the page loads.
+*/
 Functions.stripInlineStyles();
